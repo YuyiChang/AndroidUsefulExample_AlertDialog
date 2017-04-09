@@ -39,7 +39,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //实例化控件
+        // Initialize buttons
         simpleDiaog= (Button) findViewById(R.id.btn_simple_dialog);
         simpleListDiaog= (Button) findViewById(R.id.btn_simple_list_dialog);
         singleChoiceDiaog= (Button) findViewById(R.id.btn_single_choice_dialog);
@@ -48,7 +48,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         customViewDiaog= (Button) findViewById(R.id.btn_custom_view_dialog);
 
         
-        //监听
+        // Initialize onClickListener for each button
         simpleDiaog.setOnClickListener(this);
         simpleListDiaog.setOnClickListener(this);
         singleChoiceDiaog.setOnClickListener(this);
@@ -57,7 +57,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         customViewDiaog.setOnClickListener(this);
     }
 
-    //点击button，弹出对应对话框
+    // If one of the buttons were clicked, call to display correspond dialog window
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -83,14 +83,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     }
 
-    //显示基本Dialog
+    // Display simple dialog
     private void showSimpleDialog(View view) {
         builder=new AlertDialog.Builder(this);
         builder.setIcon(R.mipmap.ic_launcher);
         builder.setTitle(R.string.simple_dialog);
         builder.setMessage(R.string.dialog_message);
 
-        //监听下方button点击事件
+        // OK and Cancel buttons on the window
         builder.setPositiveButton(R.string.postive_button, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -104,7 +104,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             }
         });
 
-        //设置对话框是可取消的
+        // Set the dialog to be cancelable
         builder.setCancelable(true);
         AlertDialog dialog=builder.create();
         dialog.show();
@@ -117,7 +117,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         builder.setTitle(R.string.simple_list_dialog);
 
         /**
-         * 设置内容区域为简单列表项
+         * Set content area to be simple list
          */
         final String[] Items={"Items_one","Items_two","Items_three"};
         builder.setItems(Items, new DialogInterface.OnClickListener() {
@@ -137,7 +137,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         builder.setTitle(R.string.single_choice_dialog);
 
         /**
-         * 设置内容区域为单选列表项
+         * Set content to be single selection item
          */
         final String[] items={"Items_one","Items_two","Items_three"};
         builder.setSingleChoiceItems(items, 1, new DialogInterface.OnClickListener() {
@@ -157,7 +157,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         builder.setTitle(R.string.simple_list_dialog);
 
         /**
-         * 设置内容区域为多选列表项
+         * Set content to be multiple selections items
          */
         final String[] items={"Items_one","Items_two","Items_three"};
         builder.setMultiChoiceItems(items, new boolean[]{true, false, true}, new DialogInterface.OnMultiChoiceClickListener() {
@@ -180,11 +180,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         builder.setTitle(R.string.custom_adapter_dialog);
 
         /**
-         * 设置内容区域为自定义adapter
+         * Set content area to be custom adapter
          */
         List<ItemBean> items=new ArrayList<>();
-        items.add(new ItemBean(R.mipmap.icon,"You can call me xiaoming"));
-        items.add(new ItemBean(R.mipmap.ic_launcher, "I'm android xiao"));
+        items.add(new ItemBean(R.mipmap.icon,"You can call me Tiger"));
+        items.add(new ItemBean(R.mipmap.ic_launcher, "I'm Android Tiger"));
         CustomAdapter adapter=new CustomAdapter(items,getApplicationContext());
         builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
             @Override
@@ -205,7 +205,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         builder.setTitle(R.string.custom_view_dialog);
 
         /**
-         * 设置内容区域为自定义View
+         * Set content area to be custom view
          */
         LinearLayout loginDialog= (LinearLayout) getLayoutInflater().inflate(R.layout.custom_view,null);
         builder.setView(loginDialog);

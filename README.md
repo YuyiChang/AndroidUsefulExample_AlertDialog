@@ -7,6 +7,6 @@ Hope you will like it :)
 
 Screenshot
 ==========================
-<a>
-  <img src="http://img.blog.csdn.net/20150501172406499"/>
-</a>
+![Main Layout](Mainlayout.png)
+
+![Simple Dialog](SimpleDialog.png)
